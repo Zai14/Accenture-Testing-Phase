@@ -2,51 +2,76 @@
 
 ## Overview
 
-This repository contains the implementation of the Accenture Testing Phase project. It is designed for the testing and validation of various features and functionalities of the system under different conditions.
+This project contains code and tests for validating email formats and password strength using Python. It also includes unit tests for verifying the correctness of the functions that check credentials (email and password). The project leverages `pytest` for testing.
 
 ## Project Structure
 
-- **/src** - Contains the source code files.
-- **/tests** - Contains unit tests for the project.
-- **/docs** - Documentation related to the system.
-- **/data** - Datasets and resources used during testing.
-- **/config** - Configuration files.
+- **main.py**: Contains the functions to validate email and password formats.
+- **testrunner.py**: Contains unit tests for the functions in `main.py`.
+- **pyproject.toml**: Project configuration file using Poetry for dependencies.
+- **replit.nix**: Configuration file for the Replit environment.
 
 ## Features
 
-- **Feature 1**: [Description of Feature 1]
-- **Feature 2**: [Description of Feature 2]
-- **Feature 3**: [Description of Feature 3]
-- [Add more features as needed]
+- **Email Validation**: Uses regular expressions to validate email formats.
+- **Password Strength Checker**: Verifies if a password contains at least one uppercase letter, one digit, and is at least 7 characters long.
+- **Password Matching**: Checks if two passwords are equal.
+- **Credential Checker**: Verifies both email and password simultaneously.
 
 ## Installation
 
+### Prerequisites
+
+- Python 3.8 or above
+- Poetry (for dependency management)
+
+### Steps
+
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/username/Accenture-Testing-Phase.git
-    cd Accenture-Testing-Phase
-    ```
+
+   ```bash
+   git clone https://github.com/username/Accenture-Testing-Phase.git
+   cd Accenture-Testing-Phase
+
 
 2. Install dependencies (use the appropriate command for your package manager, e.g., `npm`, `pip`, etc.):
     ```bash
-    [your package manager] install
+    poetry install
     ```
 
 3. Configure the environment variables as required (add details if there are any `.env` or config files to be set up).
 
 ## Usage
 
-1. Run the application:
+1. Run the application & Tests:
     ```bash
-    [command to run the app]
+    poetry run pytest
     ```
+2. You can use the main.py file to check email and password validity by calling the respective functions:
+  ```python
+from main import check_credentials
 
-2. Execute tests:
-    ```bash
-    [command to run the tests]
-    ```
+email = "test@example.com"
+psw1 = "Password123"
+psw2 = "Password123"
 
-3. View test results and outputs in the `/logs` directory.
+if check_credentials(email, psw1, psw2):
+    print("Valid credentials")
+else:
+    print("Invalid credentials")
+```
+3. The test cases are located in testrunner.py. You can run all the tests with:
+```bash
+poetry run pytest testrunner.py
+```
+##Testing
+The project includes tests for email validation, password strength, and password matching. Here are a few examples:
+
+1)test_email1:Validates a proper email.           
+2)test_check_psw1: Tests a valid password with uppercase, lowercase, and digits.     
+3)test_psw_equal1: Checks that two equal passwords return True.      
+4)test_check_credentials1: Validates both correct email and password.       
+
 
 ## Contributing
 
